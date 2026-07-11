@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSA Certificate Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- JSZip for combining files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- FileSaver for downloading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- Cropper.js -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+</head>
+
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <main class="glass-container">
+        <header>
+            <h1>GSA Certificate Portal</h1>
+            <p>Say goodbye to manual editing hours 🚀 Just drop the names, crop the sig, and let it cook. Generating aesthetic GSA Product Trials certificates in literally seconds. W workflow, no cap.</p>
+        </header>
+
+        <section class="form-section">
+            <div class="input-group">
+                <label for="cert-month">Pick the Vibe (Month) 📅</label>
+                <select id="cert-month">
+                    <option value="">Vibe checking available months... ⏳</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="cert-date">What's the Date tho? 🗓️</label>
+                <input type="text" id="cert-date" placeholder="e.g. July 12, 2026 (make it aesthetic)">
+            </div>
+
+            <div class="input-group">
+                <label for="signature-upload">Slide the Signature in ✍️</label>
+                <input type="file" id="signature-upload" accept="image/*">
+                <small>Drop a transparent PNG. Don't be mid, keep it clean. ✨</small>
+            </div>
+
+            <div class="input-group">
+                <label for="students-data">Who's getting the W? 🏆 (Student List)</label>
+                <textarea id="students-data" rows="8"
+                    placeholder="Format: Name, Type (W or P)&#10;e.g.&#10;Gyanesh Maurya, W (Main Character Energy)&#10;Cali, P (Goat)"></textarea>
+                <small>One homie per line. Separate by comma. (W = Winner, P = Participant) No slacking. 🛑</small>
+            </div>
+
+            <button id="generate-btn" class="primary-btn">
+                <span>Cook & Secure the Bag (ZIP) 🎒</span>
+                <div class="spinner" id="loading-spinner" style="display: none;"></div>
+            </button>
+        </section>
+
+        <div id="status-message"></div>
+
+        <!-- Hidden Canvas for processing images -->
+        <canvas id="cert-canvas" style="display:none;"></canvas>
+    </main>
+
+    <footer class="site-footer">
+        <p>Built different with ❤️ by <strong>Gyanesh Maurya</strong></p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/gyanesh-maurya/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com/the.gyanesh/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://github.com/gyanesh-maurya/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+    </footer>
+
+    <!-- Cropper Modal -->
+    <div id="cropper-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>Crop that Sig ✂️</h2>
+            <div class="img-container">
+                <img id="image-to-crop" src="">
+            </div>
+            <div class="modal-actions">
+                <button id="cancel-crop-btn" class="secondary-btn">Nah, nvm 🛑</button>
+                <button id="save-crop-btn" class="primary-btn">Valid, Save it ✅</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

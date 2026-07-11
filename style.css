@@ -1,0 +1,314 @@
+@font-face {
+    font-family: 'GoogleSans';
+    src: url('./fonts/GoogleSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+:root {
+    --google-blue: #4285F4;
+    --google-red: #EA4335;
+    --google-yellow: #FBBC05;
+    --google-green: #34A853;
+    --bg-color: #F8F9FA;
+    --surface-color: #FFFFFF;
+    --text-primary: #202124;
+    --text-secondary: #5F6368;
+    --border-color: #DADCE0;
+    --input-bg: #F1F3F4;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'GoogleSans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Background Mesh/Accent for a modern look */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(66, 133, 244, 0.1), rgba(234, 67, 53, 0.05), rgba(251, 188, 5, 0.05), rgba(52, 168, 83, 0.1));
+    z-index: -1;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+}
+
+/* Modern Card Container */
+.glass-container {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0,0,0,0.03);
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .glass-container {
+        padding: 1.5rem;
+        border-radius: 20px;
+        margin: 1rem auto;
+    }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--google-blue), var(--google-red), var(--google-yellow), var(--google-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+label {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-left: 4px;
+}
+
+input[type="text"],
+input[type="file"],
+textarea,
+select {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    color: var(--text-primary);
+    font-family: 'GoogleSans', sans-serif;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+}
+
+/* Improve File Input Look */
+input[type="file"] {
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    background: #FFFFFF;
+    border-color: var(--google-blue);
+    box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
+}
+
+small {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-left: 4px;
+}
+
+.primary-btn {
+    background: var(--google-blue);
+    color: white;
+    border: none;
+    padding: 1.25rem;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: 'GoogleSans', sans-serif;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 10px rgba(66, 133, 244, 0.3);
+}
+
+.primary-btn:hover {
+    background: #3367D6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(66, 133, 244, 0.4);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.primary-btn:disabled {
+    background: #A0C3FF;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#status-message {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: bold;
+    min-height: 1.5rem;
+}
+.success { color: var(--google-green); }
+.error { color: var(--google-red); }
+.info { color: var(--google-blue); }
+
+/* Footer Styles */
+.site-footer {
+    width: 100%;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.site-footer strong {
+    color: var(--text-primary);
+}
+
+.social-links {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--google-blue);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--google-red);
+}
+
+/* Cropper Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-content h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.img-container {
+    width: 100%;
+    max-height: 50vh;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+}
+
+.img-container img {
+    display: block;
+    max-width: 100%;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: 'GoogleSans', sans-serif;
+}
+
+.secondary-btn:hover {
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+
+.modal-actions .primary-btn {
+    padding: 0.8rem 1.5rem;
+    margin-top: 0;
+}
