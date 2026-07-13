@@ -25,7 +25,8 @@
     <main class="glass-container">
         <header>
             <h1>GSA Certificate Portal</h1>
-            <p>Say goodbye to manual editing hours 🚀 Just drop the names, crop the sig, and let it cook. Generating aesthetic GSA Product Trials certificates in literally seconds. W workflow, no cap.</p>
+            <p>Say goodbye to manual editing hours 🚀 Just drop the names, crop the sig, and let it cook. Generating
+                aesthetic GSA Product Trials certificates in literally seconds. W workflow, no cap.</p>
         </header>
 
         <section class="form-section">
@@ -85,6 +86,20 @@
             <div class="modal-actions">
                 <button id="cancel-crop-btn" class="secondary-btn">Nah, nvm 🛑</button>
                 <button id="save-crop-btn" class="primary-btn">Valid, Save it ✅</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notice Modal -->
+    <div id="notice-modal" class="modal-overlay" style="display: flex;">
+        <div class="modal-content notice-content">
+            <h2>Notice ⚠️</h2>
+            <p style="text-align: center; margin: 1rem 0;">We have removed the June certificate from our portal.</p>
+            <p style="text-align: center; margin-top: -20px;">As we don't give a f* about Past, pr uski yaade 😭 Khair.
+            </p>
+            <div class="modal-actions" style="justify-content: center;">
+                <button id="close-notice-btn" class="primary-btn"
+                    onclick="document.getElementById('notice-modal').style.display='none'">Got it</button>
             </div>
         </div>
     </div>
