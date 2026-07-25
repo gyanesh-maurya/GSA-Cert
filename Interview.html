@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSA Certificate Generator</title>
+    <title>GSA Interview Certificate Generator</title>
     <link rel="stylesheet" href="style.css">
     <!-- JSZip for combining files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -13,15 +13,6 @@
     <!-- Cropper.js -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-58XH59T1TE"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-58XH59T1TE');
-    </script>
 </head>
 
 <body>
@@ -33,38 +24,42 @@
 
     <main class="glass-container">
         <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
-            <a href="Interview.html" class="secondary-btn" style="text-decoration: none; display: inline-block;">Interview Portal ➡️</a>
+            <a href="index.html" class="secondary-btn" style="text-decoration: none; display: inline-block;">⬅️ Home
+                Portal</a>
         </div>
         <header>
-            <h1>GSA Certificate Portal</h1>
-            <p>Say goodbye to manual editing hours 🚀 Just drop the names, crop the sig, and let it cook. Generating
-                aesthetic GSA Product Trials certificates in literally seconds. W workflow, no cap.</p>
+            <h1>Interview Certificate Portal for GSA</h1>
+            <p>Say goodbye to manual editing hours 🚀 Just drop the names, details, crop the sig, and let it cook.
+                Generating aesthetic certificates for Interview.</p>
         </header>
 
         <section class="form-section">
             <div class="input-group">
-                <label for="cert-month">Pick the Vibe (Month) 📅</label>
-                <select id="cert-month">
-                    <option value="">Vibe checking available months... ⏳</option>
-                </select>
+                <label for="cert-date">Date 🗓️</label>
+                <input type="text" id="cert-date" placeholder="e.g. July 12, 2026">
             </div>
 
             <div class="input-group">
-                <label for="cert-date">What's the Date tho? 🗓️</label>
-                <input type="text" id="cert-date" placeholder="e.g. July 12, 2026">
+                <label for="cert-initiative">Initiative Name 🚀</label>
+                <input type="text" id="cert-initiative" placeholder="e.g. Product Understanding">
+            </div>
+
+            <div class="input-group">
+                <label for="cert-institute">Institute Name 🏫</label>
+                <input type="text" id="cert-institute" placeholder="e.g. Genz Institute">
             </div>
 
             <div class="input-group">
                 <label for="signature-upload">Slide the Signature in ✍️</label>
                 <input type="file" id="signature-upload" accept="image/*">
-                <small>Drop a transparent PNG. Don't be mid, keep it clean. ✨</small>
+                <small>Drop a transparent PNG. Keep it clean. ✨</small>
             </div>
 
             <div class="input-group">
                 <label for="students-data">Who's getting the W? 🏆 (Student List)</label>
                 <textarea id="students-data" rows="8"
-                    placeholder="Format: Name, Type (W or P)&#10;e.g.&#10;Gyanesh Maurya, W (Main Character Energy)&#10;Cali, P (Goat)"></textarea>
-                <small>One homie per line. Separate by comma. (W = Winner, P = Participant) No slacking. 🛑</small>
+                    placeholder="Format: Name (one per line)&#10;e.g.&#10;Gyanesh Maurya&#10;Gyani"></textarea>
+                <small>One homie per line. No slacking. 🛑</small>
             </div>
 
             <button id="generate-btn" class="primary-btn">
@@ -110,22 +105,7 @@
         </div>
     </div>
 
-    <!-- Notice Modal -->
-    <div id="notice-modal" class="modal-overlay" style="display: flex;">
-        <div class="modal-content notice-content">
-            <h2>Notice ⚠️</h2>
-            <p style="text-align: center; margin: 1rem 0;">Kuchu puchu, Certificate generate krne aaye ho...</p>
-            <p style="text-align: center; margin-top: -20px;">mera insta follow krlo n, Linkedin pe v connection bhej do
-                n 👉👈
-            </p>
-            <div class="modal-actions" style="justify-content: center;">
-                <button id="close-notice-btn" class="primary-btn"
-                    onclick="document.getElementById('notice-modal').style.display='none'">Got it</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="interview.js"></script>
 </body>
 
 </html>
