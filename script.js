@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = URL.createObjectURL(file);
             imageToCrop.src = url;
             cropperModal.style.display = 'flex';
-            
+
             // Initialize Cropper
             if (cropper) {
                 cropper.destroy();
@@ -80,19 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function probeAvailableMonths() {
         const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        
+
         const promises = months.map(month => {
             return new Promise((resolve) => {
                 const img = new Image();
                 img.onload = () => resolve(month);
                 img.onerror = () => resolve(null);
-                img.src = `./Certificates/${month}/part.jpg`;
+                img.src = `./Certificates/months/${month}/part.jpg`;
             });
         });
 
         const results = await Promise.all(promises);
         const validMonths = results.filter(m => m !== null);
-        
+
         monthSelect.innerHTML = ''; // Clear loading text
 
         if (validMonths.length === 0) {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (requiredTypes.has('winner')) {
                 try {
-                    templates.winner = await loadImage(`./Certificates/${certMonth}/win.jpg`);
+                    templates.winner = await loadImage(`./Certificates/months/${certMonth}/win.jpg`);
                 } catch (e) {
                     throw new Error(`Big yikes. No winner certificate found for ${displayMonth}. 📉`);
                 }
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (requiredTypes.has('participant')) {
                 try {
-                    templates.participant = await loadImage(`./Certificates/${certMonth}/part.jpg`);
+                    templates.participant = await loadImage(`./Certificates/months/${certMonth}/part.jpg`);
                 } catch (e) {
                     throw new Error(`Big yikes. No participant certificate found for ${displayMonth}. 📉`);
                 }
