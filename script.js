@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMessage = document.getElementById('status-message');
     const loadingSpinner = document.getElementById('loading-spinner');
     const monthSelect = document.getElementById('cert-month');
+    const downloadSection = document.getElementById('download-section');
+    const manualDownloadBtn = document.getElementById('manual-download-btn');
+    let latestZipContent = null;
+
+    if (manualDownloadBtn) {
+        manualDownloadBtn.addEventListener('click', () => {
+            if (latestZipContent) {
+                saveAs(latestZipContent, 'Certificates.zip');
+            }
+        });
+    }
 
     // Cropper elements
     const cropperModal = document.getElementById('cropper-modal');
@@ -109,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
+            if (downloadSection) downloadSection.style.display = 'none';
             setLoading(true);
             showStatus('Let him cook... 🍳', 'info');
 
@@ -201,9 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Generate ZIP
             showStatus('Stuffing it in the ZIP... 📦', 'info');
-            const zipContent = await zip.generateAsync({ type: 'blob' });
-            saveAs(zipContent, 'Certificates.zip');
+            latestZipContent = await zip.generateAsync({ type: 'blob' });
+            saveAs(latestZipContent, 'Certificates.zip');
 
+            if (downloadSection) downloadSection.style.display = 'block';
             showStatus(`Massive W! Secured ${students.length} certificates! 🎉`, 'success');
         } catch (error) {
             console.error(error);
