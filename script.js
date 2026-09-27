@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // --- Draw Name ---
                 // Approximate position based on visual inspection
                 ctx.font = 'bold 200px "GoogleSans", sans-serif';
-                const nameY = canvas.height * 0.542; // Adjusted down to fit the line
+                const nameY = canvas.height * 0.522;
                 ctx.fillText(student.name, canvas.width / 2, nameY);
 
                 // --- Draw Date ---

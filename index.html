@@ -115,19 +115,35 @@
     <div id="notice-modal" class="modal-overlay" style="display: flex;">
         <div class="modal-content notice-content">
             <h2>Notice ⚠️</h2>
-            <p style="text-align: center; margin: 1rem 0;">Kuchu puchu, Certificate generate krne aaye ho... abto <b
-                    style="color: brown;">August</b> ka v Cerificate add kr diya</p>
-            <p style="text-align: center; margin-top: -20px;">mera insta follow krlo n, Linkedin pe v connection bhej do
-                n 👉👈
-            </p>
+            <p style="text-align: center; margin: 1rem 0;">Meri kuchu-puchu mujhse baat nahi kar rahi hai 🥺👉👈 <br>
+                Kya tum log Insta ya LinkedIn par ye notice wala post kar sakte ho aur mujhe tag kar dena? 🥹❤️<br><br>
+
+                Woh Insta/LinkedIn par nahi hai, main post ka SS usse bhej dunga… shayad meri kuchu-puchu maan jaaye aur
+                mujhse baat kar le 🥺👉👈</p>
             <div class="modal-actions" style="justify-content: center;">
-                <button id="close-notice-btn" class="primary-btn"
-                    onclick="document.getElementById('notice-modal').style.display='none'">Got it</button>
+                <button id="close-notice-btn" class="primary-btn" disabled
+                    onclick="document.getElementById('notice-modal').style.display='none'">Got it (10s)</button>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        (function () {
+            const btn = document.getElementById('close-notice-btn');
+            let remaining = 10;
+            const timer = setInterval(() => {
+                remaining--;
+                if (remaining <= 0) {
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.textContent = 'Got it';
+                } else {
+                    btn.textContent = `Got it (${remaining}s)`;
+                }
+            }, 1000);
+        })();
+    </script>
 </body>
 
 </html>
